@@ -25,6 +25,9 @@ jobs:
     - name: Install Dependencies with Yarn
       run: yarn install
 
+    - name: Upgrading Yarn
+      run: yarn upgrade  
+
     - name: Build Angular App
       run: yarn build --prod
 

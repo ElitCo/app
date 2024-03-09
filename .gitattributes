@@ -1,0 +1,5 @@
+# Set the .gitignore file for different branches
+.gitignore export-ignore
+
+# Specify a different .gitignore file for the gh-pages branch
+.gitignore export-subst

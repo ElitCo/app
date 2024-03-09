@@ -28,7 +28,7 @@ jobs:
         run: yarn upgrade
 
       - name: Build Angular App
-        run: yarn build --prod
+        run: yarn build
 
   deploy:
     runs-on: ubuntu-latest

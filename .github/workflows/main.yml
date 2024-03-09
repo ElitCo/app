@@ -38,6 +38,6 @@ jobs:
     - name: Deploy to GitHub Pages
       uses: JamesIves/github-pages-deploy-action@releases/v4
       with:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.AUTOMATED_TOKEN }}
         BRANCH: gh-pages
-        FOLDER: dist/your-angular-app-name
+        FOLDER: dist/elitco

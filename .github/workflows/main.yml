@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js with Yarn
       uses: actions/setup-node@v3
       with:
-        node-version: lts
+        node-version: 'lts'
         registry-url: 'https://registry.yarnpkg.com'
 
     - name: Install Yarn

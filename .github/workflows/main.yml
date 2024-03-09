@@ -25,8 +25,8 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
-          repository-name: elitco.github.io/app/
+          repository-name: https://elitco.github.io/app/
           branch: gh-pages
           folder: dist/elitco
-          target-folder: ngx-toggle
+          target-folder: elitco
           token: ${{ secrets.AUTOMATED_TOKEN }}

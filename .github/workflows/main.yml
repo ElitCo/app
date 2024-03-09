@@ -1,36 +1,36 @@
-name: Angular CI/CD
-
+name: CD
 on:
   push:
     branches:
       - main
-
 jobs:
-  build:
+  cd:
+    concurrency: ci-${{ github.ref }}
     runs-on: ubuntu-latest
-
     steps:
-    - name: Checkout Repository
-      uses: actions/checkout@v2
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '20.x'
-
-    - name: Install Dependencies
-      run: npm install
-
-    - name: Build Angular App
-      run: npm run build 
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
-    - name: Deploy to GitHub Pages
-      uses: JamesIves/github-pages-deploy-action@releases/v4
-      with:
-        GITHUB_TOKEN: ${{ secrets.AUTOMATED_TOKEN }}
-        BRANCH: gh-pages
-        FOLDER: dist/elitco
+      - name: Checkout ✅
+        uses: actions/checkout@v2
+        with:
+          persist-credentials: false
+      - name: Setup 🏗
+        uses: actions/setup-node@v2
+        with:
+          node-version: lts/*
+          cache: "npm"
+      - name: Install ⚙️
+        run: npm ci
+      - name: Build 🛠
+        run: npm run build:ci
+      - name: Test 📋
+        run: npm run test:ci
+      - name: Publish 📢
+          GH_TOKEN: ${{ secrets.AUTOMATED_TOKEN }}
+        run: npx semantic-release
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
+        with:
+          repository-name: elitco.github.io/app/
+          branch: gh-pages
+          folder: dist/elitco
+          target-folder: ngx-toggle
+          token: ${{ secrets.AUTOMATED_TOKEN }}

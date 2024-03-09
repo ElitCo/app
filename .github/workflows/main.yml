@@ -36,9 +36,9 @@ jobs:
     steps:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@releases/v4
-        on:
-          push:
-            branches:
+          on:
+            push:
+              branches:
               - main
         with:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -1,4 +1,4 @@
-name: Angular Deployment
+name: Deploy
 
 on:
   push:
@@ -6,32 +6,28 @@ on:
       - main
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v3
+      - uses: actions/checkout@v2
 
-      - name: Set up Node.js and Yarn
-        uses: actions/setup-node@v3
+      - name: Use Node.js LTS
+        uses: actions/setup-node@v2
         with:
-          node-version: '20.x'
-          registry-url: https://registry.yarnpkg.com/
-          cache: yarn
+          node-version: "lts/*"
 
       - name: Install Dependencies
-        run: yarn install
+        run: yarn
 
       - name: Upgrading Yarn
         run: yarn upgrade
 
-      - name: Build Angular App with SSR
-        run: yarn run build
+      - name: Build
+        run: yarn build
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@releases/v3
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
         with:
-          GITHUB_TOKEN: ${{ secrets.AUTOMATED_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: dist/elitco/browser
+          github_token: ${{ secrets.AUTOMATED_TOKEN }}
+          publish_dir: ./dist/elitco/browser

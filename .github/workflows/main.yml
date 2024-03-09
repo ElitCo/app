@@ -12,20 +12,22 @@ jobs:
         uses: actions/checkout@v2
         with:
           persist-credentials: false
+
       - name: Setup 🏗
         uses: actions/setup-node@v2
         with:
           node-version: lts/*
           cache: "npm"
+
       - name: Install ⚙️
         run: npm ci
+
       - name: Build 🛠
         run: npm run build:ci
+
       - name: Test 📋
         run: npm run test:ci
-      - name: Publish 📢
-          GH_TOKEN: ${{ secrets.AUTOMATED_TOKEN }}
-        run: npx semantic-release
+      
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:

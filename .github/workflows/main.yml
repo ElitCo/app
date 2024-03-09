@@ -23,7 +23,7 @@ jobs:
         run: npm install -g yarn
 
       - name: Install Dependencies with Yarn
-        run: yarn install
+        run: yarn
 
       - name: Build Angular App
         run: yarn build 

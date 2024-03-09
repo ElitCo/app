@@ -25,7 +25,6 @@ jobs:
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
-          repository-name: https://elitco.github.io/app/
           branch: gh-pages
           folder: dist/elitco
           target-folder: elitco

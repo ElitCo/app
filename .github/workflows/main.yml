@@ -21,11 +21,11 @@ jobs:
       - name: Install Yarn
         run: npm install -g yarn
 
-      - name: Install Dependencies with Yarn
-        run: yarn install
-
       - name: Upgrading Yarn
         run: yarn upgrade
+
+      - name: Install Dependencies with Yarn
+        run: yarn install
 
       - name: Build Angular App
         run: yarn build

@@ -22,6 +22,9 @@ jobs:
       - name: Install Yarn
         run: npm install -g yarn
 
+      - name: Upgrade Yarn
+        run: yarn upgrade
+
       - name: Install Dependencies with Yarn
         run: yarn
 

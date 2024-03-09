@@ -41,4 +41,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.AUTOMATED_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: dist/elitco
+          FOLDER: /dist/elitco

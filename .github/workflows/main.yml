@@ -10,35 +10,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+    - name: Checkout Repository
+      uses: actions/checkout@v2
 
-      - name: Set up Node.js with Yarn
-        uses: actions/setup-node@v3
-        with:
-          node-version: '20.x'
-          registry-url: 'https://registry.yarnpkg.com'
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 14
 
+    - name: Install Dependencies
+      run: npm install
 
-      - name: Install Yarn
-        run: npm install -g yarn
-
-      - name: Install Dependencies with Yarn
-        run: yarn install
-
-      - name: Upgrade Yarn
-        run: yarn upgrade
-
-      - name: Build Angular App
-        run: yarn build
+    - name: Build Angular App
+      run: npm run build 
 
   deploy:
     runs-on: ubuntu-latest
     needs: build
     steps:
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@releases/v4
-        with:
-          GITHUB_TOKEN: ${{ secrets.AUTOMATED_TOKEN }}
-          BRANCH: gh-pages
-          FOLDER: /dist/elitco
+    - name: Deploy to GitHub Pages
+      uses: JamesIves/github-pages-deploy-action@releases/v4
+      with:
+        GITHUB_TOKEN: ${{ secrets.AUTOMATED_TOKEN }}
+        BRANCH: gh-pages
+        FOLDER: dist/elitco

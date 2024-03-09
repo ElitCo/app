@@ -40,4 +40,4 @@ jobs:
         with:
           GITHUB_TOKEN: ${{ secrets.AUTOMATED_TOKEN }}
           BRANCH: gh-pages
-          FOLDER: dist/elitco/browser
+          FOLDER: dist/elitco/browser/
